@@ -149,5 +149,55 @@ the veto becomes all-or-nothing across scenes; the class-conditioned table is
 what lets the checker tell scenes and arcs apart. The re-rank count is unchanged
 under × 0.5 and × 2; the veto counts move with the scale, as a threshold test must.
 """
+
+# ---- D9: rock scenes (D9_rock.md, pre-registered 2026-11-01)
+sv = rd("d9_survey.csv"); d9 = rd("kt4_d9.csv"); k1d = rd("kt1b_d9_results.csv"); loo = json.load(open(H / "sam_probe_loo.json"))
+inj = [r for r in d9 if r["n"] != ""]; real = {r["arm"]: r for r in d9 if r["arm"].startswith("real_")}
+def d9row(n, a):
+    S = [r for r in inj if r["n"] == n and r["arm"] == a]; rr = sorted(float(r["p_saved"]) for r in S if r["rerank"] == "True")
+    v = sum(r["veto@0.05"] == "True" for r in S); rs = sum(r["rescue@0.05"] == "True" for r in S)
+    adj = sum(r["rerank"] == "True" and r["rock_adjacent_planner"] == "True" for r in S)
+    return f"| {n} | {a} | {len(rr)}/{len(S)} | {rr[len(rr)//2]:.4f} | {rr[-1]:.4f} | {v} | {rs} | {v - rs} | {adj} |"
+resc = sum(r["rescue@0.05"] == "True" for r in inj)
+h6b = all(max(float(r["p_saved"]) for r in inj if r["n"] == n and r["rerank"] == "True") > 0.0168 for n in ("1", "2", "4", "8"))
+stormd = (H / "storm_d9_results.csv").exists(); sd = rd("storm_d9_results.csv") if stormd else []
+md += f"""
+## D9 — rock-containing scenes (`D9_rock.md`, pre-registered; panel ask, Miller)
+
+**Sampling frame (`d9_survey.csv`).** Of the {len(sv)} gold test labels, {sum(int(r["rock_px"]) > 0 for r in sv)}
+have any big-rock pixel in the valid region; {sum(int(r["cells25"]) > 0 for r in sv)} have a rock cell at the Def. 1′ threshold (25 %),
+{sum(int(r["cells05"]) > 0 for r in sv)} at 5 %; {sum(int(r["cone25"]) > 0 for r in sv)} has rock cells inside the reachable cone.
+A 20-scene rock sample cannot be drawn and a lower threshold selects nothing new: the absence of
+rock in KT4 is a property of the AI4Mars gold test set at the min3-100agree consensus level.
+
+**Injected rock (`kt4_d9.csv`, `d9_summary.csv`).** n rock cells placed at random in the reachable
+cone of each of the 40 evaluation maps, 5 seeds (100 maps per row); planner, checker, θ as KT4.
+rock-adj = re-ranks in which the planner's nominal arc has a rock as its outward slip neighbour in bands 0–2.
+
+| n | arm | re-rank | P saved median | P saved max | veto@0.05 | rescue | stop | rock-adj |
+|---|---|---|---|---|---|---|---|---|
+""" + "\n".join(d9row(n, a) for n in ("1", "2", "4", "8") for a in ("gold", "sam2")) + f"""
+
+- **H6a (rescue fraction at θ = 0.05 strictly positive): {"supported" if resc else "refuted"}** — {resc} rescues in {len(inj)} maps
+  (KT4 had 0 in 19 vetoes).
+- **H6b (max P saved > 0.0168 at every n): {"supported" if h6b else "refuted"}.**
+- Reading: with collisions possible the arc starts to matter — re-rank in {sum(r["rerank"] == "True" for r in inj)}/{len(inj)} maps,
+  rock-adjacent planner arc in {sum(r["rerank"] == "True" and r["rock_adjacent_planner"] == "True" for r in inj)} of them — but most vetoes
+  remain stops ({sum(r["veto@0.05"] == "True" for r in inj) - resc} of {sum(r["veto@0.05"] == "True" for r in inj)}), because the sink
+  risk of the whole cone is unchanged by the injection. Synthetic perturbation of real maps: tests the model, not Mars.
+
+**The one real rock scene** `NLB_556756308…` (same drive as evaluation scene `NLB_556756244…`; in the probe's training split):
+gold map {real["real_gold"]["n_rock"]} rock cells (bands 4–5), planner {real["real_gold"]["planner_arc"]}
+P = {float(real["real_gold"]["p_planner"]):.4f}, best {real["real_gold"]["best_arc"]} P = {float(real["real_gold"]["p_best"]):.4f}
+(re-rank, stop at every θ). Leave-one-out SAM 2 probe (`sam_probe_loo.py`, `sam_probe_loo.json`; this scene's 400 training patches removed):
+patch accuracy {loo["patch_accuracy"]:.3f}, big-rock recall {loo["recall_per_class"]["big_rock"]:.0%} on {loo["gold_counts"][3]} gold rock patches
+({loo["rock_pred_counts"][1]} predicted bedrock, {loo["rock_pred_counts"][3]} rock) → map has {real["real_sam2"]["n_rock"]} rock cells, planner P = {float(real["real_sam2"]["p_planner"]):.4f}:
+the perception miss removes the collision risk from the verdict entirely (n = 1, descriptive).
+
+**Oracle (`kt1b_d9_results.csv`).** PRISM on n = 4, s = 0 (40 maps) + both real-scene maps:
+{len(k1d):,} values on {len({r["map"] for r in k1d})} maps, disagreements > 1e-6: {sum(float(r["abs_diff"]) > 1e-6 for r in k1d)},
+worst {max(float(r["abs_diff"]) for r in k1d):.3e}.""" + (f""" Storm `--exact` on the same models, run 16-way on a Linux host (`storm_d9_par.py`, host in `storm_d9_host.txt`; `storm_d9_results.csv`):
+{len(sd):,} values, disagreements: {sum(float(r["storm_vs_checker"]) > 1e-6 or float(r["storm_vs_prism"]) > 1e-6 for r in sd)},
+worst {max(max(float(r["storm_vs_checker"]), float(r["storm_vs_prism"])) for r in sd):.3e}.""" if sd else " Storm: pending.") + "\n"
 (H / "results.md").write_text(md)
 print("results.md written")

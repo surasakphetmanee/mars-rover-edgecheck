@@ -1,0 +1,33 @@
+{
+ "scene": "NLB_556756308EDR_F0651642NCAM00285M1",
+ "train_patches": 100680,
+ "left_out_patches": 400,
+ "eval_patches": 1879,
+ "patch_accuracy": 0.873336881319851,
+ "recall_per_class": {
+  "soil": null,
+  "bedrock": 0.9875,
+  "sand": 0.9987212276214834,
+  "big_rock": 0.0
+ },
+ "pred_counts": [
+  2,
+  310,
+  1567,
+  0
+ ],
+ "gold_counts": [
+  0,
+  80,
+  1564,
+  235
+ ],
+ "t_enc_s": 2.217104750001454,
+ "device": "mps",
+ "rock_pred_counts": [
+  1,
+  230,
+  4,
+  0
+ ]
+}

@@ -7,7 +7,7 @@ Compared per map, K in {4, 8} (M = 3): Pmin/Pmax F<=K fail, Pmin/Pmax F fail
 (closed loop, M = 0 model) and the 27 per-arc values Pmin[F<=K fail | arc].
 Run twice: blind counts as fail, and --noblind.
 """
-import csv, json, re, subprocess, sys
+import csv, json, os, re, subprocess, sys
 from pathlib import Path
 
 H = Path(__file__).resolve().parent
@@ -54,7 +54,7 @@ for mp in map(Path, sys.argv[1:]):
                                  prism=p, checker=cv, abs_diff=abs(p - cv)))
         print(f"{mp.stem} done", file=sys.stderr, flush=True)
 
-out = H / "kt1b_results.csv"; new = not out.exists()
+out = H / os.environ.get("KT1B_OUT", "kt1b_results.csv"); new = not out.exists()   # D9 writes kt1b_d9_results.csv
 with open(out, "a", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
     if new: w.writeheader()

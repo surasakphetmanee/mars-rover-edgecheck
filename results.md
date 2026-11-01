@@ -142,3 +142,48 @@ verdict): supported.** With uniform parameters the re-rank count collapses and
 the veto becomes all-or-nothing across scenes; the class-conditioned table is
 what lets the checker tell scenes and arcs apart. The re-rank count is unchanged
 under × 0.5 and × 2; the veto counts move with the scale, as a threshold test must.
+
+## D9 — rock-containing scenes (`D9_rock.md`, pre-registered; panel ask, Miller)
+
+**Sampling frame (`d9_survey.csv`).** Of the 322 gold test labels, 5
+have any big-rock pixel in the valid region; 2 have a rock cell at the Def. 1′ threshold (25 %),
+2 at 5 %; 1 has rock cells inside the reachable cone.
+A 20-scene rock sample cannot be drawn and a lower threshold selects nothing new: the absence of
+rock in KT4 is a property of the AI4Mars gold test set at the min3-100agree consensus level.
+
+**Injected rock (`kt4_d9.csv`, `d9_summary.csv`).** n rock cells placed at random in the reachable
+cone of each of the 40 evaluation maps, 5 seeds (100 maps per row); planner, checker, θ as KT4.
+rock-adj = re-ranks in which the planner's nominal arc has a rock as its outward slip neighbour in bands 0–2.
+
+| n | arm | re-rank | P saved median | P saved max | veto@0.05 | rescue | stop | rock-adj |
+|---|---|---|---|---|---|---|---|---|
+| 1 | gold | 53/100 | 0.0044 | 0.1706 | 67 | 2 | 65 | 15 |
+| 1 | sam2 | 53/100 | 0.0027 | 0.1849 | 32 | 1 | 31 | 14 |
+| 2 | gold | 65/100 | 0.0124 | 0.1854 | 71 | 6 | 65 | 23 |
+| 2 | sam2 | 67/100 | 0.0050 | 0.1555 | 39 | 9 | 30 | 26 |
+| 4 | gold | 79/100 | 0.0247 | 0.2467 | 71 | 6 | 65 | 43 |
+| 4 | sam2 | 76/100 | 0.0050 | 0.1673 | 38 | 7 | 31 | 24 |
+| 8 | gold | 87/100 | 0.0447 | 0.3119 | 77 | 10 | 67 | 46 |
+| 8 | sam2 | 89/100 | 0.0234 | 0.3508 | 47 | 14 | 33 | 55 |
+
+- **H6a (rescue fraction at θ = 0.05 strictly positive): supported** — 55 rescues in 800 maps
+  (KT4 had 0 in 19 vetoes).
+- **H6b (max P saved > 0.0168 at every n): supported.**
+- Reading: with collisions possible the arc starts to matter — re-rank in 569/800 maps,
+  rock-adjacent planner arc in 246 of them — but most vetoes
+  remain stops (387 of 442), because the sink
+  risk of the whole cone is unchanged by the injection. Synthetic perturbation of real maps: tests the model, not Mars.
+
+**The one real rock scene** `NLB_556756308…` (same drive as evaluation scene `NLB_556756244…`; in the probe's training split):
+gold map 10 rock cells (bands 4–5), planner SSS
+P = 0.1588, best SRR P = 0.1469
+(re-rank, stop at every θ). Leave-one-out SAM 2 probe (`sam_probe_loo.py`, `sam_probe_loo.json`; this scene's 400 training patches removed):
+patch accuracy 0.873, big-rock recall 0% on 235 gold rock patches
+(230 predicted bedrock, 0 rock) → map has 0 rock cells, planner P = 0.0779:
+the perception miss removes the collision risk from the verdict entirely (n = 1, descriptive).
+
+**Oracle (`kt1b_d9_results.csv`).** PRISM on n = 4, s = 0 (40 maps) + both real-scene maps:
+5,208 values on 42 maps, disagreements > 1e-6: 0,
+worst 2.220e-16. Storm `--exact` on the same models, run 16-way on a Linux host (`storm_d9_par.py`, host in `storm_d9_host.txt`; `storm_d9_results.csv`):
+5,208 values, disagreements: 0,
+worst 3.331e-16.
