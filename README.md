@@ -10,6 +10,8 @@ number the checker returns is validated against the PRISM model checker.
 
 ![demo](demo/contact_sheet_sam2.png)
 
+Demo video (2 min 54 s, English captions): `demo/video/demo_captioned.mp4`, captions in `demo/video/captions.srt`.
+
 ## Pipeline
 1. **See** — a Curiosity Navcam frame from NASA's AI4Mars gold test set.
 2. **Classify terrain** — SAM 2.1 (Meta, open weights) image-encoder features per

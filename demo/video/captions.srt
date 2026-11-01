@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:08,000
+Before a Mars rover drives, can it know the exact probability that the drive fails, computed on the rover itself?
+
+2
+00:00:08,000 --> 00:00:20,000
+A rover decides alone. Its planner scores candidate arcs by cost, but no number says how likely an arc is to end stuck or crashed.
+
+3
+00:00:20,000 --> 00:00:34,000
+Our pipeline: a Navcam frame, Meta SAM 2.1 features with a linear probe for terrain classes, a stochastic terrain model built on board, and a C checker that evaluates every candidate arc.
+
+4
+00:00:34,000 --> 00:00:50,000
+Each line is one of 27 candidate arcs, coloured by its verified failure probability. Here the planner's arc (SSS) has P = 0.0953; the checker's best (SLL) has P = 0.0785.
+
+5
+00:00:50,000 --> 00:01:02,000
+Another scene: planner SSS at P = 0.0119, checker's best SLL at P = 0.0080. Terrain: soil orange, bedrock blue, sand yellow.
+
+6
+00:01:02,000 --> 00:01:14,000
+Here every arc is above the 0.05 threshold (best P = 0.0776). The checker's answer is not 'steer elsewhere' but 'stop'.
+
+7
+00:01:14,000 --> 00:01:28,000
+Why trust it? On every property it supports, the checker agrees with the PRISM model checker, both on an independent oracle and on its own terrain models.
+
+8
+00:01:28,000 --> 00:01:42,000
+It is fast: the whole candidate set is checked in microseconds on a scene-sized grid, even on the slower stand-in core.
+
+9
+00:01:42,000 --> 00:01:54,000
+The C code was also checked exhaustively on every small map, with memory and undefined-behaviour sanitizers.
+
+10
+00:01:54,000 --> 00:02:08,000
+Finding one: the checker finds a strictly safer arc in a third to a half of the scenes, but the improvement is small.
+
+11
+00:02:08,000 --> 00:02:22,000
+Finding two: almost every veto says stop, not go elsewhere, because every arc of a scene shares most of its risk.
+
+12
+00:02:22,000 --> 00:02:36,000
+Finding three: what the camera model sees changes the verdict more than which arc is chosen. Where human labellers disagreed, SAM 2 still classifies the ground.
+
+13
+00:02:36,000 --> 00:02:47,000
+Limits: terrain probabilities are assumed, the grid is in image space, and SAM 3.1's text-prompted segmentation is the natural next step.
+
+14
+00:02:47,000 --> 00:02:54,000
+Code, data pointers and every result are in the public repository. Thank you.

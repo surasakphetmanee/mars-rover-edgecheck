@@ -17,3 +17,5 @@ verify/exhaustive.dSYM/
 checker/edgecheck
 __pycache__/
 .DS_Store
+demo/video/s*.png
+demo/video/list.txt
