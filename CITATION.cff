@@ -9,4 +9,4 @@ version: 1.0.0
 date-released: 2026-11-01
 license: MIT
 repository-code: "https://github.com/surasakphetmanee/mars-rover-edgecheck"
-# doi: filled in after the Zenodo archive of the v1.0.0 release exists
+doi: 10.5281/zenodo.23857088

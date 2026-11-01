@@ -81,6 +81,7 @@ results CSV are committed, so the checker and the veto study run without any
 download.
 Pinned versions: `requirements.txt`, `requirements-sam2.txt`, `ENVIRONMENT.md`
 (SAM 2 commit and checkpoint sha256). Citation: `CITATION.cff`.
+Archived release v1.0.0: [doi:10.5281/zenodo.23857088](https://doi.org/10.5281/zenodo.23857088).
 
 ## Licence and credits
 
