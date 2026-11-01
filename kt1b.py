@@ -11,7 +11,7 @@ import csv, json, re, subprocess, sys
 from pathlib import Path
 
 H = Path(__file__).resolve().parent
-BIN = H / "checker" / "edgecheck"; PRISM = Path.home() / "ResearchTools/bin/prism"
+BIN = H / "checker" / "edgecheck"; PRISM = Path(__import__("os").environ.get("PRISM", "prism"))
 PY = sys.executable; PARAMS = H / "terrain_params.csv"; TOL = 1e-6
 WORK = H / "kt1b_models"; WORK.mkdir(exist_ok=True)
 
