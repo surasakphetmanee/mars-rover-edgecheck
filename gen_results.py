@@ -199,5 +199,32 @@ the perception miss removes the collision risk from the verdict entirely (n = 1,
 worst {max(float(r["abs_diff"]) for r in k1d):.3e}.""" + (f""" Storm `--exact` on the same models, run 16-way on a Linux host (`storm_d9_par.py`, host in `storm_d9_host.txt`; `storm_d9_results.csv`):
 {len(sd):,} values, disagreements: {sum(float(r["storm_vs_checker"]) > 1e-6 or float(r["storm_vs_prism"]) > 1e-6 for r in sd)},
 worst {max(max(float(r["storm_vs_checker"]), float(r["storm_vs_prism"])) for r in sd):.3e}.""" if sd else " Storm: pending.") + "\n"
+
+# ---- D5: planner-continuation values (D5_planner.md)
+d5a = rd("d5_arcs.csv"); d5m = rd("kt4_d5.csv"); d5p = rd("d5_prism.csv"); d5s = {r["quantity"]: r["value"] for r in rd("d5_summary.csv")}
+gp = sorted(float(r["gap"]) for r in d5a); gpl = sorted(float(r["v_plan_planner"]) - float(r["v_opt_planner"]) for r in d5m)
+md += f"""
+## D5 — planner-continuation values (`D5_planner.md`; panel ask, PV)
+V^plan(a): the arc's three steers, then the weighted-sum planner re-planning from every cell
+(policies in `d5_policies/`). Python backward induction (`d5_planner_cont.py`), oracle PRISM on a
+DTMC with the policy baked in (`gen_rover_policy.py`, `d5_prism.csv`): {len(d5p):,} values,
+disagreements > 1e-6: {sum(float(r["abs_diff"]) > 1e-6 for r in d5p)}, worst {max(float(r["abs_diff"]) for r in d5p):.3e}.
+
+| quantity | value |
+|---|---|
+| arcs (40 maps × 27) | {len(d5a):,} |
+| V^plan − V^opt, median / max | {gp[len(gp)//2]:.2e} / {gp[-1]:.4f} |
+| on the planner's own arc, median / max | {gpl[len(gpl)//2]:.2e} / {gpl[-1]:.4f} |
+| maps whose best arc changes | {d5s["maps_best_arc_changes"]} / {len(d5m)} |
+| re-rank (optimistic / planner continuation) | {d5s["maps_rerank_opt"]} / {d5s["maps_rerank_plan"]} |
+| veto@0.01 (opt / plan / changed) | {d5s["veto_opt@0.01"]} / {d5s["veto_plan@0.01"]} / {d5s["veto_changes@0.01"]} |
+| veto@0.05 (opt / plan / changed) | {d5s["veto_opt@0.05"]} / {d5s["veto_plan@0.05"]} / {d5s["veto_changes@0.05"]} |
+| veto@0.10 (opt / plan / changed) | {d5s["veto_opt@0.1"]} / {d5s["veto_plan@0.1"]} / {d5s["veto_changes@0.1"]} |
+
+Reading (descriptive): the optimistic V_K(a) is a lower bound that is tight on the planner's own
+arc (the planner's continuation is close to optimal where it is about to drive) and loose on arcs
+the planner would steer away from, where the gap reaches {gp[-1]:.3f}; the veto verdict at
+θ = 0.05 is identical under both values in every map.
+"""
 (H / "results.md").write_text(md)
 print("results.md written")

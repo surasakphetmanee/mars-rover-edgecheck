@@ -187,3 +187,25 @@ the perception miss removes the collision risk from the verdict entirely (n = 1,
 worst 2.220e-16. Storm `--exact` on the same models, run 16-way on a Linux host (`storm_d9_par.py`, host in `storm_d9_host.txt`; `storm_d9_results.csv`):
 5,208 values, disagreements: 0,
 worst 3.331e-16.
+
+## D5 — planner-continuation values (`D5_planner.md`; panel ask, PV)
+V^plan(a): the arc's three steers, then the weighted-sum planner re-planning from every cell
+(policies in `d5_policies/`). Python backward induction (`d5_planner_cont.py`), oracle PRISM on a
+DTMC with the policy baked in (`gen_rover_policy.py`, `d5_prism.csv`): 1,080 values,
+disagreements > 1e-6: 0, worst 1.943e-16.
+
+| quantity | value |
+|---|---|
+| arcs (40 maps × 27) | 1,080 |
+| V^plan − V^opt, median / max | 5.15e-05 / 0.1534 |
+| on the planner's own arc, median / max | 7.24e-06 / 0.0443 |
+| maps whose best arc changes | 28 / 40 |
+| re-rank (optimistic / planner continuation) | 17 / 37 |
+| veto@0.01 (opt / plan / changed) | 33 / 33 / 0 |
+| veto@0.05 (opt / plan / changed) | 19 / 19 / 0 |
+| veto@0.10 (opt / plan / changed) | 11 / 12 / 1 |
+
+Reading (descriptive): the optimistic V_K(a) is a lower bound that is tight on the planner's own
+arc (the planner's continuation is close to optimal where it is about to drive) and loose on arcs
+the planner would steer away from, where the gap reaches 0.153; the veto verdict at
+θ = 0.05 is identical under both values in every map.
