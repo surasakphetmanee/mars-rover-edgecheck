@@ -1,0 +1,22 @@
+// M006 -- SMG arm. defender = monitor/check placement, attacker = CAN spoof
+// timing under budget b. Stackelberg by construction: the defender's memory
+// budget m is fixed in the model, the attacker chooses when to spend.
+
+// P1: the defender's game value -- the collision probability it can guarantee
+// against a worst-case attacker.
+<<defender>>Pmin=? [ F "unsafe" ]
+
+// P2: the same value read from the attacker's side. Determinacy says these are
+// equal; computed independently, this is the primary invariant gate.
+<<attacker>>Pmax=? [ F "unsafe" ]
+
+// P3: the safety-objective dual. <<defender>>Pmax[G !unsafe] must equal
+// 1 - <<defender>>Pmin[F unsafe]. Second, independent gate.
+<<defender>>Pmax=? [ G !"unsafe" ]
+
+// P4: expected time to detection under an adversarial attacker. Infinity means
+// the attacker can avoid ever tripping the monitor.
+<<defender>>R{"time"}min=? [ F "latched" ]
+
+// P5: can the defender force detection at all?
+<<defender>>Pmax=? [ F "latched" ]

@@ -1,0 +1,5 @@
+class,slip,sink,provenance
+bedrock,0.01,0.0,H5 half
+soil,0.025,0.001,H5 half
+sand,0.075,0.01,H5 half
+unknown,0.075,0.01,H5 half

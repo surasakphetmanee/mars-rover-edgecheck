@@ -1,0 +1,19 @@
+// M006 -- MDP arm (no attacker). Player 2 is the environment, so every
+// max is a worst-case over adversity.
+
+// P1: worst-case collision probability
+Pmax=? [ F "unsafe" ]
+
+// P2: best-case probability of never colliding. Computed INDEPENDENTLY of P1
+// because it is the invariant gate: for a reachability objective the two are
+// dual and must satisfy P1 + P2 = 1 exactly. A cell that fails this has a
+// broken model and stops the experiment.
+Pmin=? [ G !"unsafe" ]
+
+// P3: expected time to detection. Infinity is a legitimate answer and means
+// the monitor cannot latch on any path -- it is recorded, not treated as an
+// error.
+R{"time"}min=? [ F "latched" ]
+
+// P4: can the monitor ever fire at all?
+Pmax=? [ F "latched" ]

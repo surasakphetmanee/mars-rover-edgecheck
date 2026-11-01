@@ -1,0 +1,51 @@
+{
+ "train_patches": 101080,
+ "eval_patches": 32031,
+ "patch_accuracy": 0.9578221098311012,
+ "recall_per_class": {
+  "soil": 0.9318108509128443,
+  "bedrock": 0.9659379766141332,
+  "sand": 0.9912503528083545,
+  "big_rock": null
+ },
+ "confusion_rows_gold_cols_pred": [
+  [
+   14444,
+   925,
+   129,
+   3
+  ],
+  [
+   109,
+   5700,
+   92,
+   0
+  ],
+  [
+   61,
+   32,
+   10536,
+   0
+  ],
+  [
+   0,
+   0,
+   0,
+   0
+  ]
+ ],
+ "gold_counts": [
+  15501,
+  5901,
+  10629,
+  0
+ ],
+ "leakage_check": {
+  "eval_scenes_sharing_site_with_train": 19,
+  "acc_shared": 0.9540891540891541,
+  "patches_shared": 28490,
+  "acc_unshared": 0.9878565377012144,
+  "patches_unshared": 3541,
+  "scenes_unshared": 1
+ }
+}

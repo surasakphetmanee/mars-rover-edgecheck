@@ -1,0 +1,5 @@
+class,slip,sink,provenance
+bedrock,0.02,0.000,assumed
+soil,0.05,0.002,assumed
+sand,0.15,0.020,assumed; ordering from Curiosity ops thresholds (sandy slopes 12.5 deg vs bedrock 25 deg) and megaripple slip up to 77 pct (novelty.md)
+unknown,0.15,0.020,assumed = sand (worst traversable)

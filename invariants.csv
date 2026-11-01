@@ -1,0 +1,84 @@
+invariant,map,result,detail
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_439226140EDR_F0240000NCAM00350M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_439226140EDR_F0240000NCAM00350M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_439226140EDR_F0240000NCAM00350M1,PASS,max arc 0
+I6 degenerate check (report),NLB_439226140EDR_F0240000NCAM00350M1,INFO,Pmax_noblind=0.0743 Pmax_blindfail=1.0000 Pmin=0.0511
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_442593301EDR_F0250312NCAM00353M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_442593301EDR_F0250312NCAM00353M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_442593301EDR_F0250312NCAM00353M1,PASS,max arc 0
+I6 degenerate check (report),NLB_442593301EDR_F0250312NCAM00353M1,INFO,Pmax_noblind=0.0743 Pmax_blindfail=1.0000 Pmin=0.0159
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_443663262EDR_F0251238NCAM00289M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_443663262EDR_F0251238NCAM00289M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_443663262EDR_F0251238NCAM00289M1,PASS,max arc 0
+I6 degenerate check (report),NLB_443663262EDR_F0251238NCAM00289M1,INFO,Pmax_noblind=0.1031 Pmax_blindfail=1.0000 Pmin=0.0159
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_443668744EDR_F0251238NCAM00292M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_443668744EDR_F0251238NCAM00292M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_443668744EDR_F0251238NCAM00292M1,PASS,max arc 0
+I6 degenerate check (report),NLB_443668744EDR_F0251238NCAM00292M1,INFO,Pmax_noblind=0.1185 Pmax_blindfail=1.0000 Pmin=0.0682
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_457152554EDR_F0380000NCAM00275M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_457152554EDR_F0380000NCAM00275M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_457152554EDR_F0380000NCAM00275M1,PASS,max arc 0
+I6 degenerate check (report),NLB_457152554EDR_F0380000NCAM00275M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1492
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_459291152EDR_F0391552NCAM00252M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_459291152EDR_F0391552NCAM00252M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_459291152EDR_F0391552NCAM00252M1,PASS,max arc 0
+I6 degenerate check (report),NLB_459291152EDR_F0391552NCAM00252M1,INFO,Pmax_noblind=0.0698 Pmax_blindfail=1.0000 Pmin=0.0159
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_463107188EDR_F0410748NCAM00274M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_463107188EDR_F0410748NCAM00274M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_463107188EDR_F0410748NCAM00274M1,PASS,max arc 0
+I6 degenerate check (report),NLB_463107188EDR_F0410748NCAM00274M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1142
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_505898434EDR_F0521162NCAM12753M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_505898434EDR_F0521162NCAM12753M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_505898434EDR_F0521162NCAM12753M1,PASS,max arc 0
+I6 degenerate check (report),NLB_505898434EDR_F0521162NCAM12753M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1492
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_512555120EDR_F0532644NCAM00264M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_512555120EDR_F0532644NCAM00264M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_512555120EDR_F0532644NCAM00264M1,PASS,max arc 0
+I6 degenerate check (report),NLB_512555120EDR_F0532644NCAM00264M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.0906
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_520359112EDR_F0550940NCAM00654M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_520359112EDR_F0550940NCAM00654M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_520359112EDR_F0550940NCAM00654M1,PASS,max arc 0
+I6 degenerate check (report),NLB_520359112EDR_F0550940NCAM00654M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.0589
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_525149367EDR_F0570774NCAM00654M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_525149367EDR_F0570774NCAM00654M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_525149367EDR_F0570774NCAM00654M1,PASS,max arc 0
+I6 degenerate check (report),NLB_525149367EDR_F0570774NCAM00654M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.0200
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_525149717EDR_F0570774NCAM07753M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_525149717EDR_F0570774NCAM07753M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_525149717EDR_F0570774NCAM07753M1,PASS,max arc 0
+I6 degenerate check (report),NLB_525149717EDR_F0570774NCAM07753M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1142
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_543357370EDR_F0613076NCAM00287M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_543357370EDR_F0613076NCAM00287M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_543357370EDR_F0613076NCAM00287M1,PASS,max arc 0
+I6 degenerate check (report),NLB_543357370EDR_F0613076NCAM00287M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1492
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_552677513EDR_F0642088NCAM00255M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_552677513EDR_F0642088NCAM00255M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_552677513EDR_F0642088NCAM00255M1,PASS,max arc 0
+I6 degenerate check (report),NLB_552677513EDR_F0642088NCAM00255M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1492
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_552682173EDR_F0642088NCAM07753M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_552682173EDR_F0642088NCAM07753M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_552682173EDR_F0642088NCAM07753M1,PASS,max arc 0
+I6 degenerate check (report),NLB_552682173EDR_F0642088NCAM07753M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1319
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_556756244EDR_F0651642NCAM00285M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_556756244EDR_F0651642NCAM00285M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_556756244EDR_F0651642NCAM00285M1,PASS,max arc 0
+I6 degenerate check (report),NLB_556756244EDR_F0651642NCAM00285M1,INFO,Pmax_noblind=0.1492 Pmax_blindfail=1.0000 Pmin=0.1315
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_565373417EDR_F0670650NCAM12753M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_565373417EDR_F0670650NCAM12753M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_565373417EDR_F0670650NCAM12753M1,PASS,max arc 0
+I6 degenerate check (report),NLB_565373417EDR_F0670650NCAM12753M1,INFO,Pmax_noblind=0.1177 Pmax_blindfail=1.0000 Pmin=0.0829
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_574078440EDR_F0681626NCAM00354M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_574078440EDR_F0681626NCAM00354M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_574078440EDR_F0681626NCAM00354M1,PASS,max arc 0
+I6 degenerate check (report),NLB_574078440EDR_F0681626NCAM00354M1,INFO,Pmax_noblind=0.0775 Pmax_blindfail=1.0000 Pmin=0.0000
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_613582793EDR_F0760556NCAM00385M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_613582793EDR_F0760556NCAM00385M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_613582793EDR_F0760556NCAM00385M1,PASS,max arc 0
+I6 degenerate check (report),NLB_613582793EDR_F0760556NCAM00385M1,INFO,Pmax_noblind=0.0357 Pmax_blindfail=1.0000 Pmin=0.0159
+"I2 monotone in k (k=3..12, 27 arcs)",NLB_613583763EDR_F0760568NCAM00354M1,PASS,min step 0.00e+00
+I3 bounded(k=R+1) = unbounded,NLB_613583763EDR_F0760568NCAM00354M1,PASS,max diff 0.00e+00
+I5 slip=sink=0 -> every arc 0,NLB_613583763EDR_F0760568NCAM00354M1,PASS,max arc 0
+I6 degenerate check (report),NLB_613583763EDR_F0760568NCAM00354M1,INFO,Pmax_noblind=0.0159 Pmax_blindfail=1.0000 Pmin=0.0159
+I4 uniform + zero params -> all arcs 0 (none leave the 11-col image in 3 steps),uniform_b,PASS,max arc 0
+I4 narrow map: P(arc)=1 iff the arc leaves the image,narrow_b,PASS,10 leaving arcs
+"I6 summary (restated, PI 2026-10-31: blind excluded)",*,PASS,Pmax_noblind min 0.0159 max 0.1492 over 20 maps; blind=fail gives 1 by construction (GATE2_I6.md)
