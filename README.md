@@ -62,6 +62,7 @@ Requirements: a C99 compiler; Python 3.12+ with `numpy pillow matplotlib`
 checkpoint in `checkpoints/` (or `$SAM2_CKPT`).
 
 ```bash
+make test                              # builds the checker and replays 84 stored checker vs PRISM maps; needs only cc and python3
 cc -std=c99 -O2 -o checker/edgecheck checker/edgecheck.c -lm
 ./checker/edgecheck terrain maps_sam2/NLB_463107188EDR_F0410748NCAM00274M1.txt terrain_params.csv 8 3
 
@@ -78,6 +79,8 @@ python3 gen_results.py                 # results.md from the CSVs
 The class maps (`maps_gold/`, `maps_sam2/`), the SAM 2 label images and every
 results CSV are committed, so the checker and the veto study run without any
 download.
+Pinned versions: `requirements.txt`, `requirements-sam2.txt`, `ENVIRONMENT.md`
+(SAM 2 commit and checkpoint sha256). Citation: `CITATION.cff`.
 
 ## Licence and credits
 

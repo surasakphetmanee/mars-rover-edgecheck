@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "mars-rover-edgecheck: an on-device bounded probabilistic model checker for rover arc commands"
+authors:
+  - family-names: Phetmanee
+    given-names: Surasak
+    affiliation: "Thammasat University"
+version: 1.0.0
+date-released: 2026-11-01
+license: MIT
+repository-code: "https://github.com/surasakphetmanee/mars-rover-edgecheck"
+# doi: filled in after the Zenodo archive of the v1.0.0 release exists

@@ -1,0 +1,7 @@
+# Perception arm only (sam_dense.py, sam_probe.py, sam_probe_loo.py, sam_features.py).
+# Used with Python 3.12.15 on Apple silicon (MPS); CPU works, slower.
+torch==2.15.0
+scikit-learn==1.9.1
+numpy==2.5.4
+pillow==13.0.0
+sam2 @ git+https://github.com/facebookresearch/sam2.git@2b90b9f5ceec907a1c18123530e92e794ad901a4

@@ -1,0 +1,5 @@
+# Checker, veto study, invariants, figures (Python 3.14.8 used; 3.12+ works).
+numpy==2.5.3
+pillow==12.3.0
+matplotlib==3.11.2
+cmcrameri==1.8
