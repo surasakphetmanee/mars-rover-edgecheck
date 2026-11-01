@@ -11,7 +11,7 @@ import csv, json, re, subprocess, sys
 from pathlib import Path
 
 H = Path(__file__).resolve().parent
-BIN = H / "checker" / "edgecheck"; PRISM = Path(__import__("os").environ.get("PRISM", "prism"))
+BIN = H / "checker" / "edgecheck"; PRISM = Path.home() / "ResearchTools/bin/prism"
 PY = sys.executable; PARAMS = H / "terrain_params.csv"; TOL = 1e-6
 WORK = H / "kt1b_models"; WORK.mkdir(exist_ok=True)
 
@@ -29,7 +29,7 @@ def prism(model, props, consts=None):
 rows = []
 for mp in map(Path, sys.argv[1:]):
     for noblind in (False, True):
-        tag = mp.stem + ("_noblind" if noblind else "")
+        tag = f"{mp.parent.name}__{mp.stem}" + ("_noblind" if noblind else "")   # folder-namespaced: gold and SAM 2 maps share scene ids
         nb = ["--noblind"] if noblind else []
         m0 = WORK / f"{tag}_M0.prism"; m3 = WORK / f"{tag}_M3.prism"
         subprocess.run([PY, str(H / "gen_rover.py"), str(mp), str(PARAMS), str(m0), "--M=0"] + nb, check=True)

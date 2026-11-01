@@ -8,7 +8,7 @@ rd = lambda p: list(csv.DictReader(open(H / p)))
 k1a = rd("kt1a_results.csv"); k1b = rd("kt1b_results.csv")
 inv_g = rd("invariants.csv"); inv_s = rd("invariants_sam2.csv")
 tim = rd("exp2/timing.csv"); fit = rd("exp2/kt3_fit.csv")
-probe = json.load(open(H / "sam_probe_eval.json"))
+probe = json.load(open(H / "sam_probe_eval.json")); storm = rd("storm_results.csv")
 oracle = json.load(open(H / "oracle_m006/results.json"))["properties"]
 c1a = Counter((r["kind"], r["status"]) for r in k1a)
 w1a = max(float(r["abs_diff"]) for r in k1a if r["abs_diff"])
@@ -59,6 +59,13 @@ Worst |checker − PRISM| = {w1a:.3e}. `unsupported` = reward properties
 {n1b} rows over {len(maps1b)} maps ({sum(m.startswith("maps/") for m in maps1b)} synthetic, {sum(m.startswith("maps_gold") for m in maps1b)} gold, {sum(m.startswith("maps_sam2") for m in maps1b)} SAM 2; K ∈ {{4, 8}};
 closed-loop Pmin/Pmax bounded and unbounded; 27 per-arc values; blind counted and not
 counted). Rows with |Δ| > 1e-6: {d1b}. Worst |Δ| = {w1b:.3e}.
+
+## Storm cross-check (`storm_results.csv`, panel D8)
+{len(storm):,} values on {len({r["map"] for r in storm})} maps re-checked with Storm 1.14 `--exact` (rational arithmetic):
+rows with |Storm − checker| or |Storm − PRISM| > 1e-6: {sum(float(r["storm_vs_checker"]) > 1e-6 or float(r["storm_vs_prism"]) > 1e-6 for r in storm)};
+worst {max(max(float(r["storm_vs_checker"]), float(r["storm_vs_prism"])) for r in storm):.3e}. The first run
+(`storm_results_run1_stale_models.csv`) is invalid: stale gold model files (overwritten by the SAM 2 run, same scene ids);
+fixed by folder-namespaced stems, KT1b rerun unchanged.
 
 ## Invariants (`invariants.csv` gold maps, `invariants_sam2.csv` SAM 2 maps)
 - gold: {invsum(inv_g)}

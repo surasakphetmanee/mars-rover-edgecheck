@@ -27,6 +27,7 @@ Demo video (2 min 54 s, English captions): `demo/video/demo_captioned.mp4`, capt
 | claim | result |
 |---|---|
 | checker = PRISM on an independent 80-model oracle (MDPs + stochastic games) | 780/780 supported rows agree, worst error 1.1e-16 |
+| Storm 1.14 in exact rational arithmetic vs PRISM and the checker (`storm_results.csv`) | 5084/5084 values agree, worst 2.2e-16 |
 | checker's own on-board model build = PRISM on an independent encoding | 5084/5084 rows agree over 41 maps, worst error 8.3e-17 |
 | all 27 arcs, scene grid, normal Mac core (thread CPU) | 25 µs |
 | same, efficiency-core stand-in for a flight CPU | 95 µs |
@@ -67,7 +68,8 @@ cc -std=c99 -O2 -o checker/edgecheck checker/edgecheck.c -lm
 python3 kt4.py sam2 maps_sam2          # veto study on the committed class maps (no data download needed)
 python3 invariants.py maps_sam2        # invariants I2-I6
 python3 -I tools/fetch_ai4mars_test.py # 322 gold test scenes (~107 MB), only for the steps below
-python3 kt1b.py maps_gold/*.txt        # checker vs PRISM on an independent encoding
+python3 kt1b.py maps/synth_a.txt maps_gold/*.txt maps_sam2/*.txt   # checker vs PRISM on an independent encoding
+python3 storm_check.py                 # then Storm (--exact) vs both; needs storm on PATH
 (cd oracle_m006 && bash run.sh)        # regenerate the 380-property PRISM oracle; then python3 kt1a.py
 python3 sam_dense.py train && python3 sam_dense.py eval && python3 sam_probe.py   # perception arm
 python3 gen_results.py                 # results.md from the CSVs

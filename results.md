@@ -22,6 +22,13 @@ Worst |checker − PRISM| = 1.110e-16. `unsupported` = reward properties
 closed-loop Pmin/Pmax bounded and unbounded; 27 per-arc values; blind counted and not
 counted). Rows with |Δ| > 1e-6: 0. Worst |Δ| = 8.327e-17.
 
+## Storm cross-check (`storm_results.csv`, panel D8)
+5,084 values on 41 maps re-checked with Storm 1.14 `--exact` (rational arithmetic):
+rows with |Storm − checker| or |Storm − PRISM| > 1e-6: 0;
+worst 2.220e-16. The first run
+(`storm_results_run1_stale_models.csv`) is invalid: stale gold model files (overwritten by the SAM 2 run, same scene ids);
+fixed by folder-namespaced stems, KT1b rerun unchanged.
+
 ## Invariants (`invariants.csv` gold maps, `invariants_sam2.csv` SAM 2 maps)
 - gold: I2 PASS 20, I3 PASS 20, I4 PASS 2, I5 PASS 20, I6 INFO 20, I6 PASS 1
 - SAM 2: I2 PASS 20, I3 PASS 20, I4 PASS 2, I5 PASS 20, I6 INFO 20, I6 PASS 1
